@@ -1,25 +1,26 @@
 package com.transaction.controller;
 
 import com.transaction.model.Transaction;
+import com.transaction.service.TransactionService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @RequestMapping("/transaction")
 public class TransactionController {
-    @RequestMapping("/{customerId}")
-    public Transaction getTransaction(@PathVariable("customerId") String customerId) {
-        // TODO: replace with original data
-        try {
-            return new Transaction(customerId, 100L, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse("2023-02-01 10:10:10"));
-        }
-        catch (Exception e){
 
-        };
-        return null;
+    @Autowired
+    TransactionService transactionService;
+
+    @RequestMapping("/{customerId}")
+    public List<Transaction> getTransaction(@PathVariable("customerId") Integer customerId) {
+        // TODO: replace with original data
+        return transactionService.fetchTransactions(customerId);
     }
 }
