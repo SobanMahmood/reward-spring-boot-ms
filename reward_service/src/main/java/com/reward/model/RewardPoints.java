@@ -4,17 +4,17 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class RewardPoints {
-    private Long customerId;
+    private Integer customerId;
     private Integer totalRewardPoints;
     private Map<String, Integer> monthlyRewardPoints;
 
-    public RewardPoints(Long cId, Integer totalPoints, Map<String, Integer> monthlyPoints) {
+    public RewardPoints(Integer cId, Integer totalPoints, Map<String, Integer> monthlyPoints) {
         this. customerId = cId;
         this.totalRewardPoints = totalPoints;
         this.monthlyRewardPoints = monthlyPoints;
     }
 
-    public void setCustomerId(Long customerId) {
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
@@ -26,7 +26,7 @@ public class RewardPoints {
         this.monthlyRewardPoints = monthlyRewardPoints;
     }
 
-    public Long getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
