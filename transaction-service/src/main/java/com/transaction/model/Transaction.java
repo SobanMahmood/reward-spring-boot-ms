@@ -3,33 +3,42 @@ package com.transaction.model;
 import java.util.Date;
 
 public class Transaction {
-    private String customerId;
-    private Long amount;
+    private Integer transactionId;
+    private Integer customerId;
+    private Double amount;
     private Date date;
 
-    public Transaction(String cId, Long amount, Date date) {
+    public Transaction(Integer transactionId, Integer cId, Double amount, Date date) {
+        this.transactionId = transactionId;
         this.customerId = cId;
         this.amount = amount;
         this.date = date;
     }
 
-    public void setCustomerId(String customerId) {
+    public void setTransactionId(Integer transactionId) {
+        this.transactionId = transactionId;
+    }
+
+    public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
     }
 
-    public void setAmount(Long amount) {
+    public void setAmount(Double amount) {
         this.amount = amount;
     }
 
     public void setDate(Date date) {
         this.date = date;
     }
+    public Integer getTransactionId() {
+        return transactionId;
+    }
 
-    public String getCustomerId() {
+    public Integer getCustomerId() {
         return customerId;
     }
 
-    public Long getAmount() {
+    public Double getAmount() {
         return amount;
     }
 
