@@ -11,24 +11,12 @@ import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
-  const [rewards, setRewards] = useState();
   const [reward, setReward] = useState();
   const [customers, setCustomers] = useState();
-  
-  const getRewards = async() =>{
-    try {
-      const response = await api.get("http://localhost:9001/api/v1/reward/customer/1");
-      setRewards(response.data);
-    }
-    catch(err){
-      console.log(err);
-    }
-  }
 
-  const getRewardData = async (customerId) => {
+  const getRewardData = async (customer) => {
     try {
-      console.log(`http://localhost:9001/api/v1/reward/customer/${customerId}`);
-      const response = await api.get(`http://localhost:9001/api/v1/reward/customer/${customerId}`);
+      const response = await api.get(`http://localhost:9001/api/v1/reward/customer/${customer.customerId}`);
       const singleReward = response.data;
       setReward(singleReward);
     }
@@ -68,13 +56,20 @@ const modalClickHandler  = row => {
  // this.setState({notebookDisplayOpen: true});
   console.log("HEYYYYYYYYYYYYYYYYYYY");
   console.log(row.customerId);
-  getRewardData(row.customerId).then((res)=>{
+  getRewardData(row).then((res)=>{
+
     console.log(reward);
   });
 }
 
-
-
+function TotalReward(props) {
+  if(props!=null && props.reward!=null){
+  return <h1>#{props.reward.customerId} Total Reward Points: {props.reward.totalRewardPoints}</h1>;
+  }
+  else {
+    return "";
+  }
+}
 
   useEffect(()=> {
     getCustomers();
@@ -95,9 +90,7 @@ const modalClickHandler  = row => {
         //Selected={handleChange}
       />
 
-<div
-  data={reward}
-/>
+      <TotalReward reward = {reward} />
 <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="/" element={<Home/>}></Route>
