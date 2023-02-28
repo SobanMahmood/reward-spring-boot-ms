@@ -1,4 +1,4 @@
-# Customer Transactions Reward App
+# Customer Transactions and Reward App
 
 ## Customer Service
 This project is responsible for handling customer data. It has its own database, and its script is placed in the root directory which can be run to setup and populate database with dummy data.

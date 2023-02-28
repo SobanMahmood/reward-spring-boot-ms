@@ -1,4 +1,4 @@
-# Customer Transactions Reward App
+# Customer Transactions and Reward App
 
 ## Reward Service
 This project is responsible for fetching needed data and calculating rewards.

@@ -1,4 +1,4 @@
-# Customer Transactions Reward App
+# Customer Transactions and Reward App
 
 ## Transaction Service
 This project is responsible for handling transaction data. It has its own database, and its script is placed in the root directory which can be run to setup and populate database with dummy data.
