@@ -53,32 +53,39 @@ const columns = [
 ]
 
 const modalClickHandler  = row => {
- // this.setState({notebookDisplayOpen: true});
-  console.log("HEYYYYYYYYYYYYYYYYYYY");
-  console.log(row.customerId);
-  getRewardData(row).then((res)=>{
-
-    console.log(reward);
+    getRewardData(row).then((res)=>{
   });
 }
 
 function TotalReward(props) {
   if(props!=null && props.reward!=null){
-  return <h1>#{props.reward.customerId} Total Reward Points: {props.reward.totalRewardPoints}</h1>;
+    return <h1>#{props.reward.customerId} Total Reward Points: {props.reward.totalRewardPoints}</h1>;
   }
   else {
     return "";
   }
 }
 
-  useEffect(()=> {
+function MonthlyReward(props) {
+  let monthlyRewardsStr = "";
+  if(props!=null && props.reward!=null && props.reward.monthlyRewardPoints!=null){
+    const monthlyRewardPoints = props.reward.monthlyRewardPoints;
+    Object.keys(monthlyRewardPoints).forEach(function(key) {
+      monthlyRewardsStr = `${monthlyRewardsStr}Rewards for ${key} = ${monthlyRewardPoints[key]}`;
+    })
+    return <h3>{monthlyRewardsStr}</h3>;
+  }
+  else {
+    return "";
+  }
+}
+
+useEffect(()=> {
     getCustomers();
   },[])
 
   return (
     <div className="App">
-  
-  
 
       <DataTable
         title="Customers"
@@ -87,17 +94,16 @@ function TotalReward(props) {
         pagination
         onRowClicked={modalClickHandler}
         Clicked
-        //Selected={handleChange}
       />
 
       <TotalReward reward = {reward} />
-<Routes>
+      <MonthlyReward reward = {reward} />
+
+      <Routes>
         <Route path="/" element={<Layout/>}>
           <Route path="/" element={<Home/>}></Route>
         </Route>
       </Routes>
-     
-
     </div>
   );
 }
