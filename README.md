@@ -2,6 +2,7 @@
 
 The app is created using Spring Boot, ReactJS and Postgres. Basic microservices architecture is used.
 
+![Screenshot](https://raw.githubusercontent.com/SobanMahmood/reward-spring-boot-ms/main/screenshot-rewards.png)
 ### Backend
 The backend consist of services divided into 3 groups. Customer, Transaction and Reward services.
 
