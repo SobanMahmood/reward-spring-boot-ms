@@ -20,7 +20,7 @@ import java.util.List;
 @Service
 public class RewardServiceImpl implements RewardService{
     @Autowired
-    RestTemplate restTemplate;
+    private RestTemplate restTemplate;
     private SimpleDateFormat dateFormat = new SimpleDateFormat("MM/yyyy");
 
     @Override

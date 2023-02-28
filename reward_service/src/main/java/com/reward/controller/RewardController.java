@@ -14,7 +14,7 @@ import java.util.HashMap;
 @RequestMapping("/reward")
 public class RewardController {
     @Autowired
-    RewardService rewardService;
+    private RewardService rewardService;
 
     @RequestMapping("/customer/{customerId}")
     public RewardPoints getReward(@PathVariable("customerId") Integer customerId) {

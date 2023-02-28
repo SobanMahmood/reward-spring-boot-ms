@@ -16,9 +16,9 @@ import java.util.List;
 public class TransactionController {
 
     @Autowired
-    TransactionService transactionService;
+    private TransactionService transactionService;
 
-    @RequestMapping("/{customerId}")
+    @RequestMapping("/customer/{customerId}")
     public List<Transaction> getTransaction(@PathVariable("customerId") Integer customerId) {
         // TODO: replace with original data
         return transactionService.fetchTransactions(customerId);

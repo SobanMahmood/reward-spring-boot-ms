@@ -10,7 +10,7 @@ import java.util.List;
 @Service
 public class TransactionServiceImpl implements TransactionService{
     @Autowired
-    TransactionRepository transactionRepository;
+    private TransactionRepository transactionRepository;
 
     @Override
     public List<Transaction> fetchTransactions(Integer customerId) {

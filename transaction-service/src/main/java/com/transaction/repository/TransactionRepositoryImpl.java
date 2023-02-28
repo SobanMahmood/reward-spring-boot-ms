@@ -14,7 +14,7 @@ import java.util.List;
 public class TransactionRepositoryImpl implements TransactionRepository{
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    private JdbcTemplate jdbcTemplate;
     private static final String SQL_GET_BY_ID = "SELECT CUSTOMER_ID, TRANSACTION_ID, AMOUNT, TRANSACTION_DATE FROM TRANSACTIONS WHERE CUSTOMER_ID = ?";
     private RowMapper<Transaction> rowMapper = new RowMapper<Transaction>() {
         @Override
