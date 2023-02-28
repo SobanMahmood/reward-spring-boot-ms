@@ -10,13 +10,13 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/customer")
+@RequestMapping("/api/v1")
 public class CustomerController {
 
     @Autowired
     private CustomerService customerService;
 
-    @RequestMapping("/customer")
+    @RequestMapping("/customers")
     public List<Customer> getCustomers() {
         // TODO: replace with original data
         return customerService.fetchCustomers();

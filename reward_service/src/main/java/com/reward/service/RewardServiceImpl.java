@@ -26,7 +26,7 @@ public class RewardServiceImpl implements RewardService{
     @Override
     public RewardPoints getRewardPointsFor(Integer customerId) {
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode transactionsJson = restTemplate.getForObject("http://localhost:9002/transaction/customer/" + customerId, JsonNode.class);
+        JsonNode transactionsJson = restTemplate.getForObject("http://localhost:9002/api/v1/transactions/customer/" + customerId, JsonNode.class);
         List<Transaction> transactions = mapper.convertValue(
                 transactionsJson,
                 new TypeReference<List<Transaction>>(){}

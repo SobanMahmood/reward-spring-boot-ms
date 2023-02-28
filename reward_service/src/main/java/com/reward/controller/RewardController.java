@@ -12,15 +12,14 @@ import java.util.Collections;
 import java.util.HashMap;
 
 @RestController
-@RequestMapping("/reward")
+@RequestMapping("/api/v1")
 public class RewardController {
     @Autowired
     private RewardService rewardService;
 
     @CrossOrigin
-    @RequestMapping("/customer/{customerId}")
+    @RequestMapping("reward/customer/{customerId}")
     public RewardPoints getReward(@PathVariable("customerId") Integer customerId) {
-        // TODO: replace the dummy data with original data
         return rewardService.getRewardPointsFor(customerId);
     }
 }

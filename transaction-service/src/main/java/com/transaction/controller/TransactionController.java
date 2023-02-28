@@ -12,15 +12,14 @@ import java.util.Date;
 import java.util.List;
 
 @RestController
-@RequestMapping("/transaction")
+@RequestMapping("/api/v1")
 public class TransactionController {
 
     @Autowired
     private TransactionService transactionService;
 
-    @RequestMapping("/customer/{customerId}")
+    @RequestMapping("/transactions/customer/{customerId}")
     public List<Transaction> getTransaction(@PathVariable("customerId") Integer customerId) {
-        // TODO: replace with original data
         return transactionService.fetchTransactions(customerId);
     }
 }
