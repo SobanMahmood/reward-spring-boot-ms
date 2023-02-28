@@ -12,6 +12,7 @@ import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
   const [reward, setReward] = useState();
+  const [customer, setCustomer] = useState();
   const [customers, setCustomers] = useState();
 
   const getRewardData = async (customer) => {
@@ -22,7 +23,7 @@ function App() {
     }
     catch(err)
     {
-
+      console.log(err);
     }
   }
 
@@ -54,12 +55,22 @@ const columns = [
 
 const modalClickHandler  = row => {
     getRewardData(row).then((res)=>{
+      setCustomer(row);
   });
+}
+
+function CustomerName(props) {
+  if(props!=null && props.customer!=null){
+    return <h1>#{props.customer.customerId}. {props.customer.firstName} {props.customer.lastName}</h1>;
+  }
+  else {
+    return "";
+  }
 }
 
 function TotalReward(props) {
   if(props!=null && props.reward!=null){
-    return <h1>#{props.reward.customerId} Total Reward Points: {props.reward.totalRewardPoints}</h1>;
+    return <h3>Total Reward Points: {props.reward.totalRewardPoints}</h3>;
   }
   else {
     return "";
@@ -73,7 +84,7 @@ function MonthlyReward(props) {
     Object.keys(monthlyRewardPoints).forEach(function(key) {
       monthlyRewardsStr = `${monthlyRewardsStr}Rewards for ${key} = ${monthlyRewardPoints[key]}`;
     })
-    return <h3>{monthlyRewardsStr}</h3>;
+    return <h5>{monthlyRewardsStr}</h5>;
   }
   else {
     return "";
@@ -96,6 +107,7 @@ useEffect(()=> {
         Clicked
       />
 
+      <CustomerName customer={customer} />
       <TotalReward reward = {reward} />
       <MonthlyReward reward = {reward} />
 
