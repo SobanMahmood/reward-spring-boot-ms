@@ -1,13 +1,10 @@
-import logo from './logo.svg';
 import './App.css';
 import api from './api/axiosConfig';
 import {useState, useEffect} from 'react';
 import Layout from './components/Layout';
 import {Routes, Route} from 'react-router-dom';
 import Home from './components/home/Home';
-//import Customer from './components/customer/Customer';
 import DataTable from 'react-data-table-component'
-import { Modal, Button } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -82,11 +79,11 @@ function MonthlyReward(props) {
   if(props!=null && props.reward!=null && props.reward.monthlyRewardPoints!=null){
     const monthlyRewardPoints = props.reward.monthlyRewardPoints;
     Object.keys(monthlyRewardPoints).forEach(function(key) {
-      monthlyRewardsStr = `${monthlyRewardsStr}Rewards for ${key} = ${monthlyRewardPoints[key]}`;
+      monthlyRewardsStr = `${monthlyRewardsStr} Rewards for ${key} = ${monthlyRewardPoints[key]}\n`
     })
-    return <h5>{monthlyRewardsStr}</h5>;
-  }
-  else {
+
+    return monthlyRewardsStr.split('\n').map(str => <p>{str}</p>);
+  } else {
     return "";
   }
 }
