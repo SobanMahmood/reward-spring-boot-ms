@@ -20,7 +20,6 @@ public class CustomerController {
 
     @RequestMapping("/customers")
     public List<Customer> getCustomers() {
-        // TODO: replace with original data
         return customerService.fetchCustomers();
     }
 }
